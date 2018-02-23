@@ -226,10 +226,11 @@ function initMap() {
   		location.marker = marker;
 
       location.marker.addListener('click',function(){
-        console.log('animation');
 
+        // for loop to set the other unclikced marker to the default aniamtion and color
         self.locationList().forEach(function(location){
           location.marker.setAnimation(null);
+          location.marker.setIcon(defaultIcon);
           });
 
         populateInfoWindow(this, infoWindow);
@@ -250,7 +251,7 @@ function initMap() {
 
         //Inof for the location from NY Times
         // Only articals subjects are displayed
-        nytimesUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + marker.title + '&sort=newest&api-key=0e0a19c19d064fd48c71688306007eb3';
+        nytimesUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + marker.title + '&sort=newest&api-key=0e0a19c19d064fd48c71688306007eb3';
         $.getJSON(nytimesUrl, function(data){
 
             articles = data.response.docs;
