@@ -1,0 +1,39 @@
+
+<!-- This is the corresponding "starter code" for 04_Hello Map in Udacity and Google's Maps
+API Course, Lesson 1 -->
+<html>
+ <head>
+ <!-- styles put here, but you can include a CSS file and reference it instead! -->
+ <link rel="stylesheet" href="css/style.css">
+ </head>
+ <body>
+   <div class="options-box">
+     <input id="search-listing" type="text" value="Search..." data-bind="textInput: filter">
+     <ul data-bind="foreach: filteredLocations">
+     		<li class="item" data-bind="text: title"></li>
+     </ul>
+     <div class="lighter-BG">
+       <ul id="nytimes-articles">
+       </ul>
+
+     </div>
+
+   </div>
+   <!-- TODO 1: Create a place to put the map in the HTML-->
+   <div id="map"></div>
+   <div class="" data-bind="foreach: locationList">
+   </div>
+
+   <script src="js/Knockout-3.4.2.js"></script>
+   <script src="js/libs/jquery.min.js"></script>
+   <script src="js/locations.js"></script>
+   <script src="js/app.js"></script>
+   <script type="js/libs/mapstyle.js">
+
+   </script>
+   <!--TODO: Load the JS API ASYNCHRONOUSLY below.-->
+   <script async defer src="http://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyA_kZcNAA3whxMKRNOBEN86PmxMLm50bik&callback=initMap">
+   </script>
+
+ </body>
+</html>
