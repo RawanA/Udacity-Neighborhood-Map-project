@@ -175,9 +175,9 @@ function initMap() {
     ]
 
   });
-
-  defaultIcon = makeMarkerIcon('red');
-  highlightedIcon = makeMarkerIcon('blue');
+  // set the color of the marker bafore and after clicking on it
+  defaultIcon = makeMarkerIcon('5bf065');
+  highlightedIcon = makeMarkerIcon('c74d3d');
 
 
   infoWindow = new google.maps.InfoWindow();
@@ -187,9 +187,9 @@ function initMap() {
   ko.applyBindings(new ViewModel());
 
   }
-  // handle map error
+  // Handle the Error of the map
   function googleMapsError() {
-      alert('An error occurred with Google Maps!');
+      $nytElem.text('An error occurred with Google Maps!');
   }
 
   var Location = function(data) {
@@ -232,13 +232,6 @@ function initMap() {
           location.marker.setAnimation(null);
           });
 
-          marker.addListener('mouseover', function() {
-           this.setIcon(highlightedIcon);
-         });
-         marker.addListener('mouseout', function() {
-           this.setIcon(defaultIcon);
-         });
-
         populateInfoWindow(this, infoWindow);
         toggleBounce(this);
       });
@@ -256,6 +249,7 @@ function initMap() {
         infowindow.open(map, marker);
 
         //Inof for the location from NY Times
+        // Only articals subjects are displayed
         nytimesUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + marker.title + '&sort=newest&api-key=0e0a19c19d064fd48c71688306007eb3';
         $.getJSON(nytimesUrl, function(data){
 
@@ -292,6 +286,7 @@ function initMap() {
           marker.setAnimation(null);
         } else {
           marker.setAnimation(google.maps.Animation.BOUNCE);
+          marker.setIcon(highlightedIcon);
         }
       }
 
@@ -318,11 +313,10 @@ function initMap() {
 
 function makeMarkerIcon(Color) {
   var markerImage = new google.maps.MarkerImage(
-    'https://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ Color +
-    '|40|_|%E2%80%A2',
+    'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|'+Color+'',
     new google.maps.Size(21, 34),
     new google.maps.Point(0, 0),
     new google.maps.Point(10, 34),
-    new google.maps.Size(21,34));
+    new google.maps.Size(20,35));
   return markerImage;
 }
