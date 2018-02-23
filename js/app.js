@@ -251,7 +251,7 @@ function initMap() {
 
         //Inof for the location from NY Times
         // Only articals subjects are displayed
-        nytimesUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + marker.title + '&sort=newest&api-key=0e0a19c19d064fd48c71688306007eb3';
+        nytimesUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + marker.title + '&sort=newest&api-key=0e0a19c19d064fd48c71688306007eb3';
         $.getJSON(nytimesUrl, function(data){
 
             articles = data.response.docs;
