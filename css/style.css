@@ -2,8 +2,8 @@ html, body {
    margin: 0; padding: 0;
 }
 .container {
-  width: 100px;
-  height: 100px;
+  width: 100p%;
+  height: 100%;
   position: relative;
 }
 #map,
@@ -14,6 +14,7 @@ html, body {
   top: 15px;
   left: 0px;
   bottom: 0px;
+  right:0px;
 }
 .options-box {
   z-index: 10;
