@@ -5,7 +5,8 @@ Bulding a map using a google map API, it includes markers of some spersified loc
 Each Location has a marker in the map, and some articals attached to it by NY Times API.(ps: some locations are not).
 
 ## How to Run 
-Here is a live Demo : 
+Here is a live Demo :
+https://rawana.github.io/Udacity-Neighborhood-Map-project/
 
 ## Chalenges 
 ### 1. Filtering the Locations accourding to the searching word.
