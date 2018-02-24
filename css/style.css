@@ -24,13 +24,13 @@ html, body {
 
 button {
    position: absolute;
-   top: 45px;
+   top: 65px;
    left: 25px;
    background-color:black;
    color:white;
 }
 .options-box{
-   top: 60px;
+   top: 70px;
 }
 /* #map {
   bottom: 0px;
