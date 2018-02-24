@@ -11,7 +11,9 @@ API Course, Lesson 1 -->
    <div class="options-box">
      <input id="search-listing" type="text" value="Search..." data-bind="textInput: filter">
      <ul data-bind="foreach: filteredLocations">
-     		<li class="item" data-bind="text: title"></li>
+     		<li class="item">
+        <a href="#" data-bind="text: title, click: $parent.selectedLocation"></a>
+      </li>
      </ul>
      <div class="lighter-BG">
        <ul id="nytimes-articles">
