@@ -11,7 +11,7 @@ console.log('MAP');
 function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 21.389303, lng: 39.869408},
+    center: {lat: 21.389289, lng: 39.869312},
     zoom: 14,
     styles: [
       {
@@ -197,22 +197,19 @@ function initMap() {
   	this.location = data.location;
   };
 
+
   var ViewModel = function(){
-
-
     var self = this;
 
     this.locationList = ko.observableArray([]);
     this.filteredLocations = ko.observableArray([]);
     this.filter = ko.observable('');
 
-
+    // insert locations to  locationlist array
     initialLocations.forEach(function(locationItem){
-
-      self.locationList.push(new Location(
-			locationItem));
-
+      self.locationList.push(new Location(locationItem));
     });
+
 
     self.locationList().forEach(function(location){
       var marker = new google.maps.Marker({
@@ -226,13 +223,7 @@ function initMap() {
   		location.marker = marker;
 
       location.marker.addListener('click',function(){
-
-        // for loop to set the other unclikced marker to the default aniamtion and color
-        self.locationList().forEach(function(location){
-          location.marker.setAnimation(null);
-          location.marker.setIcon(defaultIcon);
-          });
-
+        setToDefault();
         populateInfoWindow(this, infoWindow);
         toggleBounce(this);
       });
@@ -241,6 +232,32 @@ function initMap() {
 
     });
     map.fitBounds(bounds);
+
+    // Filtered Seached locations
+    this.filteredLocations = ko.computed(function(){
+      var filter = self.filter().toLowerCase();
+      if(!filter){
+        self.locationList().forEach(
+          function(location) {
+            location.marker.setMap(map);
+          });
+        return self.locationList();
+      }
+      else{
+        return ko.utils.arrayFilter(self.locationList(), function(location){
+
+            if(stringStartsWith(location.title.toLowerCase(), filter)){
+              location.marker.setMap(map);
+            }
+            else{
+              location.marker.setMap(null);
+            }
+
+          return stringStartsWith(location.title.toLowerCase(), filter);
+        });
+      }
+
+    },self);
 
     // Location Information
     function populateInfoWindow(marker, infowindow){
@@ -259,12 +276,13 @@ function initMap() {
             if(articles == 0){
                 $nytElem.text('New York Times Articles Could Not Be Found');
             }else{
-              for (var i = 0; i < articles.length; i++) {
+              // Only 9 articals as max will be viewd
+              for (var i = 0; i < 9; i++) {
                   var article = articles[i];
 
                   $nytElem.append('<li class="article">'+
                       '<a href="'+article.web_url+'">'+article.headline.main+'</a></li>');
-              };
+              }
             }
 
 
@@ -291,26 +309,34 @@ function initMap() {
         }
       }
 
-  // Filtered Seached locations
-  this.filteredLocations = ko.computed(function(){
-    var filter = self.filter().toLowerCase();
-    if(!filter){
-      return self.locationList();
-    }else{
-      return ko.utils.arrayFilter(self.locationList(), function(location){
-        return stringStartsWith(location.title.toLowerCase(), filter);
-      });
-    }
-  });
+      //function to compare with the filter and return boolean value
+      var stringStartsWith = function (string, startsWith) {
+        string = string || "";
+        if (startsWith.length > string.length){
+          return false;
+        }
+        else{
+          return string.substring(0, startsWith.length) === startsWith;
 
-  var stringStartsWith = function (string, startsWith) {
-    string = string || "";
-    if (startsWith.length > string.length)
-        return false;
-    return string.substring(0, startsWith.length) === startsWith;
+        }
+      };
+
+      this.selectedLocation = function(clickedLocation) {
+        setToDefault();
+        toggleBounce(clickedLocation.marker);
+        populateInfoWindow(clickedLocation.marker,infoWindow);
 };
 
+
+// a Loop to set the other unclikced markers to the default aniamtion and color
+function setToDefault(){
+  self.locationList().forEach(function(location){
+    location.marker.setAnimation(null);
+    location.marker.setIcon(defaultIcon);
+    });
 }
+};
+
 
 function makeMarkerIcon(Color) {
   var markerImage = new google.maps.MarkerImage(
