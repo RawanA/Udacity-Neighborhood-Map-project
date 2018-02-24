@@ -12,10 +12,8 @@ API Course, Lesson 1 -->
  </head>
  <body>
   <div class="container">
-   <button type="button" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
-   <div class="options-box">
-      
-      <div class="collapse" id="demo">
+   <button type="button" data-toggle="collapse" data-target="#demo">Simple collapsible</button>      
+      <div class="options-box collapse" id="demo">
      <input id="search-listing" type="text" value="Search..." data-bind="textInput: filter">
      <ul data-bind="foreach: filteredLocations">
      		<li class="item">
@@ -27,8 +25,6 @@ API Course, Lesson 1 -->
        </ul>
 
      </div>
-
-   </div>
     </div>
    <!-- TODO 1: Create a place to put the map in the HTML-->
    <div id="map"></div>
