@@ -1,45 +1,44 @@
-console.log('location');
 var initialLocations = [
 	{
-		title: 'Bracher Park',
+		title: 'Al-Rajhi Mosque',
 		location: {
-			lat: 21.552203,
-			lng: 39.8654408
+			lat: 21.381813,
+			lng: 39.873498
 			}
 	},
 	{
-		title: 'Hacker Dojo (old)',
+		title: 'Jamia Ameera Fahdah bint Turki Al Sudairi',
 		location: {
-		lat: 21.377903,
-		lng: 39.329408
+		lat: 21.374071,
+		lng: 39.878508
 		}
 	},
 	{
-		title: 'Hacker Dojolf;df',
+		title: 'Dunkin\' Donuts',
 		location: {
-		lat: 21.319303,
-		lng: 39.86218
+		lat: 21.354664,
+		lng: 39.890611
 		}
 	},
 	{
-		title: 'Red Rock Coffee',
+		title: 'McDonalds',
 		location: {
-		lat: 21.489303,
-		lng: 39.869408
+		lat: 21.349415,
+		lng: 39.905308
 		}
 	},
 	{
-		title: 'Com Tam Thanh (Broken Rice)',
+		title: 'SABB',
 		location: {
-		lat: 21.680003,
-		lng: 39.869400
+		lat: 21.358027,
+		lng: 39.875141
 		}
 	},
 	{
-		title: 'House of Falafel',
+		title: 'My Home',
 		location: {
-		lat: 21.1893032,
-		lng: 39.869092
+		lat: 21.389289,
+		lng: 39.869312
 		}
 	}
 ];
