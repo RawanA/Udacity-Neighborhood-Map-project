@@ -273,7 +273,7 @@ function initMap() {
 
             articles = data.response.docs;
             $nytElem.text('');
-            if(articles == 0){
+            if(articles === null){
                 $nytElem.text('New York Times Articles Could Not Be Found');
             }else{
               // Only 9 articals as max will be viewd
