@@ -5,7 +5,7 @@ html, body {
 #map {
   bottom: 0px;
   height: 100%;
-  padding-left: 2px;
+  left: 200px;
   position: absolute;
   right: 0px;
 }
